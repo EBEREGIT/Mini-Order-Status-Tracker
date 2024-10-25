@@ -19,6 +19,7 @@ export default function All({ data }: { data: Order[] }) {
     "Fulfillment Status",
     "Date Ordered",
     "Order Line Items",
+    ""
   ];
 
   return (
@@ -34,15 +35,18 @@ export default function All({ data }: { data: Order[] }) {
       <TableBody>
         {data && data.length
           ? data.map((item, index) => (
-              <TableRow key={item.id}>
-                <TableCell>{index + 1}</TableCell>
-                <TableCell>{reduceString(item.id)}</TableCell>
-                <TableCell>{item.user.name}</TableCell>
-                <TableCell>{item.user.address}</TableCell>
-                <TableCell>{item.fulfillmentStatus}</TableCell>
-                <TableCell>{moment(item.createdAt).format("L")}</TableCell>
-                <TableCell>{item.lineItems.length}</TableCell>
-              </TableRow>
+              <>
+                <TableRow key={item.id}>
+                  <TableCell>{index + 1}</TableCell>
+                  <TableCell>{reduceString(item.id)}</TableCell>
+                  <TableCell>{item.user.name}</TableCell>
+                  <TableCell>{item.user.address}</TableCell>
+                  <TableCell>{item.fulfillmentStatus}</TableCell>
+                  <TableCell>{moment(item.createdAt).format("L")}</TableCell>
+                  <TableCell>{item.lineItems.length}</TableCell>
+                  <TableCell>{"View Items"}</TableCell>
+                </TableRow>
+              </>
             ))
           : ""}
       </TableBody>
