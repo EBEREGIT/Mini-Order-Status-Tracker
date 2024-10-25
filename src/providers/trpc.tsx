@@ -14,7 +14,7 @@ export default function TRPCProvider({
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: `${process.env.BASE_URL}/api/trpc`,
+          url: `/api/trpc`,
         }),
       ],
     })
