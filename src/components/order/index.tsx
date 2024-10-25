@@ -1,12 +1,19 @@
 "use client";
 
 import { trpc } from "@/server/client";
-import React from "react";
 import All from "./orders";
 import { Order } from "@/lib/type";
+import Pagination from "../pagination";
+import { useState } from "react";
 
 export default function Orders() {
-  const orders = trpc.order.getOrders.useQuery({ page: 1 });
+  const [page, setPage] = useState(1);
+  const orders = trpc.order.getOrders.useQuery({ page });
 
-  return <All data={orders.data as Order[]} />;
+  return (
+    <>
+      <All data={orders.data as Order[]} />
+      <Pagination setter={setPage} page={page} />
+    </>
+  );
 }

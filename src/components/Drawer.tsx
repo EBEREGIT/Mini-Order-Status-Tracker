@@ -29,9 +29,7 @@ export function DrawerComponent({ order }: { order: Order }) {
             </DrawerDescription>
           </DrawerHeader>
 
-          <div className="mx-auto w-full p-5 h-96 overflow-scroll">
-            <OrderLineItems orderId={order.id} />
-          </div>
+          <OrderLineItems orderId={order.id} />
 
           <DrawerFooter>
             <DrawerClose asChild>
