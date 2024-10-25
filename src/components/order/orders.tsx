@@ -1,14 +1,12 @@
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { reduceString } from "@/lib/helpers";
 import { Order } from "@/lib/type";
-import moment from "moment";
+import Body from "./body";
 
 export default function All({ data }: { data: Order[] }) {
   const headings: string[] = [
@@ -19,7 +17,6 @@ export default function All({ data }: { data: Order[] }) {
     "Fulfillment Status",
     "Date Ordered",
     "Order Line Items",
-    ""
   ];
 
   return (
@@ -34,19 +31,10 @@ export default function All({ data }: { data: Order[] }) {
 
       <TableBody>
         {data && data.length
-          ? data.map((item, index) => (
-              <>
-                <TableRow key={item.id}>
-                  <TableCell>{index + 1}</TableCell>
-                  <TableCell>{reduceString(item.id)}</TableCell>
-                  <TableCell>{item.user.name}</TableCell>
-                  <TableCell>{item.user.address}</TableCell>
-                  <TableCell>{item.fulfillmentStatus}</TableCell>
-                  <TableCell>{moment(item.createdAt).format("L")}</TableCell>
-                  <TableCell>{item.lineItems.length}</TableCell>
-                  <TableCell>{"View Items"}</TableCell>
-                </TableRow>
-              </>
+          ? data.map((item: Order, index) => (
+              <TableRow key={item.id}>
+                <Body order={item} index={index} />
+              </TableRow>
             ))
           : ""}
       </TableBody>

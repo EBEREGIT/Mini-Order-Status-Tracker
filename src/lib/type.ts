@@ -4,7 +4,7 @@ export type Order = {
   fulfillmentStatus: string;
   createdAt: string;
   user: User;
-  lineItems: OrderLineItems[];
+  lineItems: LineItems[];
 };
 
 export type User = {
@@ -18,10 +18,27 @@ export type User = {
   updatedAt: string;
 };
 
-export type OrderLineItems = {
+export type LineItems = {
   id: string;
   orderId: string;
   productId: string;
   quantity: number;
+  createdAt: string;
+};
+
+export type LineItemWithProductDetails = {
+  id: string;
+  orderId: string;
+  productId: string;
+  quantity: number;
+  createdAt: string;
+  product: Product;
+};
+
+export type Product = {
+  id: string;
+  name: string;
+  description?: string;
+  price: number;
   createdAt: string;
 };
