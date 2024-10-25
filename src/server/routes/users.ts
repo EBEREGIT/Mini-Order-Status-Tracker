@@ -4,11 +4,7 @@ import { procedure, router } from "../trpc";
 export const userRouter = router({
   getUsers: procedure.query(async () => {
     try {
-      const users = await prisma.order.findMany({
-        include: {
-          lineItems: true,
-        },
-      });
+      const users = await prisma.user.findMany();
       return users;
     } catch (e) {
       throw e;
