@@ -18,7 +18,7 @@ export default function Item({
         <CardTitle>{lineItem.product.name}</CardTitle>
         <CardDescription>{lineItem.product.description}</CardDescription>
       </CardHeader>
-      <CardContent>{lineItem.product.price}</CardContent>
+      <CardContent>₦ {lineItem.product.price} K</CardContent>
     </Card>
   );
 }
