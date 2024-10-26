@@ -1,9 +1,12 @@
-import Users from "@/components/users";
+import Orders from "@/components/order";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <Users />
+    <div className="w-screen">
+      <h2 className="text-center text-3xl py-5 font-bold sticky bg-white z-[1]">
+        Cybership Customer Orders
+      </h2>
+      <Orders />
     </div>
   );
 }

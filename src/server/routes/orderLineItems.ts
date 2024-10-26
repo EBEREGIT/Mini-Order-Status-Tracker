@@ -4,21 +4,24 @@ import { z } from "zod";
 
 const ROWS_PER_PAGE = Number(process.env.ROWS_PER_PAGE as unknown as number);
 
-export const orderRouter = router({
-  getOrders: procedure
+export const orderLineItemRouter = router({
+  getOrderLineItems: procedure
     .input(
       z.object({
         page: z.number(),
+        orderId: z.string(),
       })
     )
     .query(async (opts) => {
       const { input } = opts;
 
       try {
-        const orders = await prisma.order.findMany({
+        const orderLineItems = await prisma.orderLineItem.findMany({
+          where: {
+            orderId: input.orderId,
+          },
           include: {
-            user: true,
-            lineItems: true,
+            product: true,
           },
           take: ROWS_PER_PAGE,
           skip: (input.page - 1) * ROWS_PER_PAGE,
@@ -26,7 +29,7 @@ export const orderRouter = router({
             createdAt: "desc",
           },
         });
-        return orders;
+        return orderLineItems;
       } catch (e) {
         throw e;
       }
