@@ -25,7 +25,7 @@ export default function OrderLineItems({ orderId }: { orderId: string }) {
             ? data.map((item: LineItemWithProductDetails) => (
                 <Item lineItem={item} key={item.id} />
               ))
-            : ""}
+            : "No Order Line Items Found"}
         </section>
       </ScrollArea>
 

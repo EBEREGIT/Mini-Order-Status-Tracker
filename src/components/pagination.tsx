@@ -1,6 +1,12 @@
-import { Button } from "./ui/button";
+import {
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
-export default function Pagination({
+export default function PaginationComponent({
   page,
   setter,
 }: {
@@ -8,22 +14,31 @@ export default function Pagination({
   setter: React.Dispatch<React.SetStateAction<number>>;
 }) {
   return (
-    <section className="flex flex-row-reverse my-5">
-      <section className="flex justify-center gap-5 place-items-center">
-        <Button
+    <section className="flex flex-row-reverse my-2">
+      <PaginationContent className="cursor-pointer">
+        {/* previous button */}
+        <PaginationItem
           onClick={() =>
             setter((prevState: number) =>
               prevState > 1 ? prevState - 1 : prevState
             )
           }
         >
-          Previous
-        </Button>
-        <p>{page}</p>
-        <Button onClick={() => setter((prevState: number) => prevState + 1)}>
-          Next
-        </Button>
-      </section>
+          <PaginationPrevious />
+        </PaginationItem>
+
+        {/* current page */}
+        <PaginationItem>
+          <PaginationLink>{page}</PaginationLink>
+        </PaginationItem>
+
+        {/* next button */}
+        <PaginationItem
+          onClick={() => setter((prevState: number) => prevState + 1)}
+        >
+          <PaginationNext />
+        </PaginationItem>
+      </PaginationContent>
     </section>
   );
 }

@@ -11,9 +11,9 @@ export default function Orders() {
   const orders = trpc.order.getOrders.useQuery({ page });
 
   return (
-    <>
-      <All data={orders.data as Order[]} />
+    <section className="w-[90%] m-auto border rounded-lg">
+      {orders.isLoading ? "Loading..." : <All data={orders.data as Order[]} />}
       <Pagination setter={setPage} page={page} />
-    </>
+    </section>
   );
 }

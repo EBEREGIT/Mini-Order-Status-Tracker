@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/table";
 import { Order } from "@/lib/type";
 import Body from "./body";
+import { ScrollArea } from "../ui/scroll-area";
 
 export default function All({ data }: { data: Order[] }) {
   const headings: string[] = [
@@ -20,24 +21,26 @@ export default function All({ data }: { data: Order[] }) {
   ];
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          {headings.map((label) => (
-            <TableHead key={label}>{label}</TableHead>
-          ))}
-        </TableRow>
-      </TableHeader>
+    <ScrollArea className="h-[80vh] border-b">
+      <Table>
+        <TableHeader className="sticky">
+          <TableRow>
+            {headings.map((label) => (
+              <TableHead key={label}>{label}</TableHead>
+            ))}
+          </TableRow>
+        </TableHeader>
 
-      <TableBody>
-        {data && data.length
-          ? data.map((item: Order, index) => (
-              <TableRow key={item.id}>
-                <Body order={item} index={index} />
-              </TableRow>
-            ))
-          : ""}
-      </TableBody>
-    </Table>
+        <TableBody>
+          {data && data.length
+            ? data.map((item: Order, index) => (
+                <TableRow key={item.id}>
+                  <Body order={item} index={index} />
+                </TableRow>
+              ))
+            : "No order found"}
+        </TableBody>
+      </Table>
+    </ScrollArea>
   );
 }
