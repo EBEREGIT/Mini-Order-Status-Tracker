@@ -5,6 +5,7 @@ import All from "./orders";
 import { Order } from "@/lib/type";
 import Pagination from "../pagination";
 import { useState } from "react";
+import { AlertComponent } from "../Alert";
 
 export default function Orders() {
   const [page, setPage] = useState(1);
@@ -12,7 +13,11 @@ export default function Orders() {
 
   return (
     <section className="w-[90%] m-auto border rounded-lg">
-      {orders.isLoading ? "Loading..." : <All data={orders.data as Order[]} />}
+      {orders.isLoading ? (
+        <AlertComponent label="Orders" />
+      ) : (
+        <All data={orders.data as Order[]} />
+      )}
       <Pagination setter={setPage} page={page} />
     </section>
   );
