@@ -8,7 +8,7 @@ export default function Leave() {
   const [feedback, setFeedback] = useState("");
 
   const logout = async () => {
-    setFeedback("Leaving");
+    setFeedback("Leaving...");
 
     try {
       await signOut({ redirectTo: "/" });

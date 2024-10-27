@@ -45,6 +45,7 @@ export default function LoginForm() {
           emailLogin(e)
         }
         className="w-full my-5"
+        disabled={email ? false : true}
       >
         Request Login Link
       </Button>
