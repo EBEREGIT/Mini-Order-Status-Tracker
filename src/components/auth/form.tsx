@@ -11,6 +11,7 @@ export default function LoginForm() {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
+    setFeedback("Authenticating...");
 
     try {
       await signIn("nodemailer", {
