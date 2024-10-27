@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import TRPCProvider from "@/providers/trpc";
 import { montserrat } from "./fonts";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Cybership",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={montserrat.className}>
       <body>
-        <TRPCProvider>{children}</TRPCProvider>
+        <SessionProvider>
+          <TRPCProvider>{children}</TRPCProvider>
+        </SessionProvider>
       </body>
     </html>
   );
