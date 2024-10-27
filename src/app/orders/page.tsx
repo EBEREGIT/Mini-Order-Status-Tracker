@@ -1,7 +1,7 @@
 import Navigation from "@/components/nav";
-import Orders from "./orders";
 import { auth } from "@/configurations/auth";
 import { redirect } from "next/navigation";
+import DataTableComponent from "./DataTableComponent";
 
 export default async function OrdersPage() {
   const session = await auth();
@@ -10,7 +10,7 @@ export default async function OrdersPage() {
   return (
     <main>
       <Navigation />
-      <Orders />
+      <DataTableComponent />
     </main>
   );
 }
