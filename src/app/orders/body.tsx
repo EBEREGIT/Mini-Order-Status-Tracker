@@ -1,9 +1,9 @@
 import React from "react";
-import { TableCell } from "../ui/table";
+import { TableCell } from "../../components/ui/table";
 import { reduceString } from "@/lib/helpers";
 import { Order } from "@/lib/type";
 import moment from "moment";
-import { DrawerComponent } from "../Drawer";
+import { DrawerComponent } from "../../components/Drawer";
 
 export default function Body({
   order,

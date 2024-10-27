@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Table,
   TableBody,
@@ -7,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { Order } from "@/lib/type";
 import Body from "./body";
-import { ScrollArea } from "../ui/scroll-area";
+import { ScrollArea } from "../../components/ui/scroll-area";
 
 export default function All({ data }: { data: Order[] }) {
   const headings: string[] = [
@@ -21,7 +23,7 @@ export default function All({ data }: { data: Order[] }) {
   ];
 
   return (
-    <ScrollArea className="h-[80vh] border-b">
+    <ScrollArea className="h-[70vh] border-b">
       <Table>
         <TableHeader className="sticky">
           <TableRow>
