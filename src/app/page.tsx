@@ -1,12 +1,14 @@
-import Orders from "@/components/order";
+import Auth from "@/components/auth";
+import { auth } from "@/configurations/auth";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+  if (session?.user) return redirect("/orders");
+
   return (
     <div className="w-screen">
-      <h2 className="text-center text-3xl py-5 font-bold sticky bg-white z-[1]">
-        Cybership Customer Orders
-      </h2>
-      <Orders />
+      <Auth />
     </div>
   );
 }

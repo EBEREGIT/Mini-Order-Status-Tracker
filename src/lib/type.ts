@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type Order = {
   id: string;
   userId: string;
@@ -41,4 +43,15 @@ export type Product = {
   description?: string;
   price: number;
   createdAt: string;
+};
+
+export type TablePropsTypes = {
+  id: string;
+  s_n: number;
+  tracking_id: string;
+  customer_name: string;
+  customer_address: string;
+  fulfillment_status: string;
+  date_ordered: string;
+  order_line_items: ReactNode;
 };
